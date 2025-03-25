@@ -1,0 +1,38 @@
+2025-03-24 19:07:34,687 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-24 19:07:34,687 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-24 19:07:34,731 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-03-24 19:07:37,537 - werkzeug - WARNING -  * Debugger is active!
+2025-03-24 19:07:37,540 - werkzeug - INFO -  * Debugger PIN: 531-159-279
+2025-03-24 19:08:02,615 - werkzeug - INFO - 127.0.0.1 - - [24/Mar/2025 19:08:02] "GET / HTTP/1.1" 200 -
+2025-03-24 19:08:02,718 - werkzeug - INFO - 127.0.0.1 - - [24/Mar/2025 19:08:02] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-03-24 19:08:02,719 - werkzeug - INFO - 127.0.0.1 - - [24/Mar/2025 19:08:02] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-03-24 19:08:03,204 - werkzeug - INFO - 127.0.0.1 - - [24/Mar/2025 19:08:03] "GET /api/milestones HTTP/1.1" 200 -
+2025-03-24 19:08:03,615 - werkzeug - INFO - 127.0.0.1 - - [24/Mar/2025 19:08:03] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-24 19:08:17,575 - MSProjectIntegration - INFO - Created new MS Project instance
+2025-03-24 19:08:17,620 - werkzeug - INFO - 127.0.0.1 - - [24/Mar/2025 19:08:17] "[35m[1mPOST /api/import-from-msproject HTTP/1.1[0m" 500 -
+2025-03-24 19:09:25,448 - MSProjectIntegration - ERROR - Error connecting to MS Project: (-2146959355, 'Server execution failed', None, None)
+2025-03-24 19:09:25,449 - werkzeug - INFO - 127.0.0.1 - - [24/Mar/2025 19:09:25] "[35m[1mPOST /api/import-from-msproject HTTP/1.1[0m" 500 -
+2025-03-24 19:10:16,898 - MSProjectIntegration - ERROR - Error connecting to MS Project: (-2146959355, 'Server execution failed', None, None)
+2025-03-24 19:10:16,899 - werkzeug - INFO - 127.0.0.1 - - [24/Mar/2025 19:10:16] "[35m[1mPOST /api/import-from-msproject HTTP/1.1[0m" 500 -
+2025-03-24 19:12:51,846 - werkzeug - INFO - 127.0.0.1 - - [24/Mar/2025 19:12:51] "GET / HTTP/1.1" 200 -
+2025-03-24 19:12:51,970 - werkzeug - INFO - 127.0.0.1 - - [24/Mar/2025 19:12:51] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-03-24 19:12:52,014 - werkzeug - INFO - 127.0.0.1 - - [24/Mar/2025 19:12:52] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-03-24 19:12:52,332 - werkzeug - INFO - 127.0.0.1 - - [24/Mar/2025 19:12:52] "GET /api/milestones HTTP/1.1" 200 -
+2025-03-24 19:13:51,905 - werkzeug - INFO - 127.0.0.1 - - [24/Mar/2025 19:13:51] "GET / HTTP/1.1" 200 -
+2025-03-24 19:13:52,074 - werkzeug - INFO - 127.0.0.1 - - [24/Mar/2025 19:13:52] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-03-24 19:13:52,145 - werkzeug - INFO - 127.0.0.1 - - [24/Mar/2025 19:13:52] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-03-24 19:13:52,358 - werkzeug - INFO - 127.0.0.1 - - [24/Mar/2025 19:13:52] "GET /api/milestones HTTP/1.1" 200 -
+2025-03-24 19:14:24,991 - MSProjectIntegration - ERROR - Error connecting to MS Project: (-2146959355, 'Server execution failed', None, None)
+2025-03-24 19:14:24,992 - werkzeug - INFO - 127.0.0.1 - - [24/Mar/2025 19:14:24] "[35m[1mPOST /api/import-from-msproject HTTP/1.1[0m" 500 -
+2025-03-24 19:16:14,844 - werkzeug - INFO -  * Detected change in 'C:\\Users\\djjme\\OneDrive\\Desktop\\CC-Directory\\ES - Milestone SV(t) Forecast\\msproject_integration.py', reloading
+2025-03-24 19:16:14,845 - werkzeug - INFO -  * Detected change in 'C:\\Users\\djjme\\OneDrive\\Desktop\\CC-Directory\\ES - Milestone SV(t) Forecast\\msproject_integration.py', reloading
+2025-03-24 19:16:14,846 - werkzeug - INFO -  * Detected change in 'C:\\Users\\djjme\\OneDrive\\Desktop\\CC-Directory\\ES - Milestone SV(t) Forecast\\msproject_integration.py', reloading
+2025-03-24 19:16:15,448 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-03-24 19:16:18,140 - werkzeug - WARNING -  * Debugger is active!
+2025-03-24 19:16:18,144 - werkzeug - INFO -  * Debugger PIN: 531-159-279
+2025-03-24 19:16:51,484 - werkzeug - INFO -  * Detected change in 'C:\\Users\\djjme\\OneDrive\\Desktop\\CC-Directory\\ES - Milestone SV(t) Forecast\\app.py', reloading
+2025-03-24 19:16:51,485 - werkzeug - INFO -  * Detected change in 'C:\\Users\\djjme\\OneDrive\\Desktop\\CC-Directory\\ES - Milestone SV(t) Forecast\\app.py', reloading
+2025-03-24 19:16:51,486 - werkzeug - INFO -  * Detected change in 'C:\\Users\\djjme\\OneDrive\\Desktop\\CC-Directory\\ES - Milestone SV(t) Forecast\\app.py', reloading
+2025-03-24 19:16:52,125 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-03-24 19:16:55,683 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)

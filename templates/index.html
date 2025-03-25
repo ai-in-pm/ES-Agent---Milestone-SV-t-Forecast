@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Milestone SV(t) Forecasting</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdn.plot.ly/plotly-2.9.0.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-calendar-check"></i> Real-Time Milestone SV(t) Forecasting
+            </a>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="card">
+                    <div class="card-header bg-light">
+                        <h5 class="card-title mb-0">
+                            <i class="bi bi-link"></i> MS Project Integration
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <p id="connection-status">Not connected to MS Project</p>
+                                <p id="last-import-time" class="text-muted small">Last import: Never</p>
+                            </div>
+                            <div class="d-flex">
+                                <button id="check-connection-btn" class="btn btn-outline-secondary me-2">
+                                    <i class="bi bi-check-circle"></i> Check MS Project Status
+                                </button>
+                                <button id="locate-milestones-btn" class="btn btn-outline-primary me-2">
+                                    <i class="bi bi-search"></i> Locate Milestones
+                                </button>
+                                <button id="import-btn" class="btn btn-primary">
+                                    <i class="bi bi-box-arrow-in-down"></i> Import from MS Project
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4" id="dashboard-summary" style="display: none;">
+            <div class="col-md-3">
+                <div class="card bg-light h-100">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Total Milestones</h3>
+                        <h2 id="total-milestones">0</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-light h-100">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Average SPI(t)</h3>
+                        <h2 id="avg-spi">0.00</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-light h-100">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Behind Schedule</h3>
+                        <h2 id="behind-count">0</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-light h-100">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">High Risk</h3>
+                        <h2 id="high-risk-count">0</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="card">
+                    <div class="card-header bg-light">
+                        <h5 class="card-title mb-0">
+                            <i class="bi bi-graph-up"></i> Milestone Timeline
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="timeline-chart" style="height: 400px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-light">
+                        <h5 class="card-title mb-0">
+                            <i class="bi bi-table"></i> Milestone Schedule Variance
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="milestones-table">
+                                <thead>
+                                    <tr>
+                                        <th>Milestone</th>
+                                        <th>Baseline Date</th>
+                                        <th>Forecast Date</th>
+                                        <th>Status</th>
+                                        <th>SV(t) (days)</th>
+                                        <th>SPI(t)</th>
+                                        <th>TSPI</th>
+                                        <th>Risk</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Table will be populated by JavaScript -->
+                                    <tr>
+                                        <td colspan="8" class="text-center">No milestone data available. Import from MS Project first.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for connection progress and errors -->
+    <div class="modal fade" id="status-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title">Connecting to MS Project</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="loading-spinner" class="text-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-2" id="loading-message">Connecting to MS Project...</p>
+                    </div>
+                    <div id="error-message" class="alert alert-danger" style="display: none;"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal for milestone location results -->
+    <div class="modal fade" id="milestone-locate-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Milestones Found in MS Project</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="milestone-locate-spinner" class="text-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-2">Locating milestones in MS Project...</p>
+                    </div>
+                    <div id="milestone-locate-error" class="alert alert-danger" style="display: none;"></div>
+                    <div id="milestone-locate-results" style="display: none;">
+                        <div class="alert alert-info" id="milestone-locate-message"></div>
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="located-milestones-table">
+                                <thead>
+                                    <tr>
+                                        <th>WBS</th>
+                                        <th>Name</th>
+                                        <th>Baseline Date</th>
+                                        <th>Current Date</th>
+                                        <th>Status</th>
+                                        <th>% Complete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Table will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="import-located-btn">Import These Milestones</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

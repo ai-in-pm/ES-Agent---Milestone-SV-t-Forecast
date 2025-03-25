@@ -1,0 +1,95 @@
+/* Main Styles for Milestone SV(t) Forecasting Tool */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+}
+
+.navbar {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar-brand i {
+    margin-right: 10px;
+}
+
+.card {
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+.card-header {
+    border-radius: 8px 8px 0 0 !important;
+}
+
+.card-title i {
+    margin-right: 8px;
+    opacity: 0.8;
+}
+
+/* Status indicators */
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.status-complete {
+    background-color: #28a745;
+}
+
+.status-in-progress {
+    background-color: #007bff;
+}
+
+.status-not-started {
+    background-color: #6c757d;
+}
+
+/* Risk indicators */
+.risk-high {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.risk-medium {
+    color: #fd7e14;
+}
+
+.risk-low {
+    color: #28a745;
+}
+
+/* SV(t) coloring */
+.sv-negative {
+    color: #dc3545;
+}
+
+.sv-positive {
+    color: #28a745;
+}
+
+/* Animation for import button */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+#import-btn:hover {
+    animation: pulse 1s infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #dashboard-summary .card {
+        margin-bottom: 15px;
+    }
+    
+    .table-responsive {
+        font-size: 0.9rem;
+    }
+}
