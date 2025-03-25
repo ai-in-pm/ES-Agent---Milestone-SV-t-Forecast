@@ -4,6 +4,11 @@ This application provides real-time schedule variance forecasting for project mi
 
 The development of this repository was inspired by the Earned Schedule Community in their development of Earned Schedule tools. To learn more visit https://www.earnedschedule.com/Calculator.shtml
 
+We still more research and work to do to get an AI Agent working side-by-side human beings in our work spaces.  I am currently training an AI Agent to execute real-world digital tasks on my behalf, such as opening Microsoft Project and locating any Milestones directly in MS Project.  Yet, it still has a hard time performing such a complex task shown in my video below:
+
+https://github.com/user-attachments/assets/5c6f1bb5-2716-42e3-afd2-465f2c30dbce
+
+
 ![image](https://github.com/user-attachments/assets/cfee8f8f-8028-4143-8cfc-3e6fb67f80fe)
 
 
