@@ -2,6 +2,12 @@
 
 This application provides real-time schedule variance forecasting for project milestones by directly integrating with Microsoft Project Desktop. It allows you to import milestone data from your active MS Project file and perform Earned Schedule calculations to forecast completion dates and analyze schedule performance.
 
+The development of this repository was inspired by the Earned Schedule Community in their development of Earned Schedule tools. To learn more visit https://www.earnedschedule.com/Calculator.shtml
+
+![image](https://github.com/user-attachments/assets/cfee8f8f-8028-4143-8cfc-3e6fb67f80fe)
+
+
+
 ## Features
 
 - Direct integration with MS Project via COM automation
